@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Login - Hostel Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-size: 16px;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .form-group a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-size: 14px;
+            text-align: center;
+            display: block;
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+        }
+        .link-toggle {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Login Form -->
+        <h2>Admin Login</h2>
+        <form action="admin-dashboard.html" method="post" id="login-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+
+        <div class="link-toggle">
+            <a href="#" id="create-admin-link">Create Admin Account</a> | 
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        <!-- Error Message (if any) -->
+        <!-- <p class="error">Incorrect username or password. Please try again.</p> -->
+
+        <!-- Create Admin Form (initially hidden) -->
+        <form action="create-admin-action.html" method="post" id="create-admin-form" style="display:none;">
+            <h2>Create Admin Account</h2>
+            <div class="form-group">
+                <label for="new-username">Username:</label>
+                <input type="text" id="new-username" name="new-username" required>
+            </div>
+            <div class="form-group">
+                <label for="new-password">Password:</label>
+                <input type="password" id="new-password" name="new-password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create Admin">
+            </div>
+            <div class="link-toggle">
+                <a href="#" id="login-link">Back to Login</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Toggle between Login and Create Admin forms
+        const createAdminLink = document.getElementById('create-admin-link');
+        const loginLink = document.getElementById('login-link');
+        const loginForm = document.getElementById('login-form');
+        const createAdminForm = document.getElementById('create-admin-form');
+
+        createAdminLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginForm.style.display = 'none';
+            createAdminForm.style.display = 'block';
+        });
+
+        loginLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginForm.style.display = 'block';
+            createAdminForm.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
